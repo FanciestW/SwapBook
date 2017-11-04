@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "361832165679",
+    "firebase_url": "https://swapbook-72651.firebaseio.com",
+    "project_id": "swapbook-72651",
+    "storage_bucket": "swapbook-72651.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:361832165679:android:2d5cfc6731299cdd",
+        "android_client_info": {
+          "package_name": "me.williamlin.swapbook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "361832165679-neu5ip1hp9174p9avivsr3kk6i8v1s0e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "me.williamlin.swapbook",
+            "certificate_hash": "d9d8ecc569c1928cbd4d459cf70693acd827ce2c"
+          }
+        },
+        {
+          "client_id": "361832165679-bq9p116fkc60e9s2apvnrailjvtfq5bv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWkfR9XcZqHaLkzTezkY7KORKi4SVPmFw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "361832165679-bq9p116fkc60e9s2apvnrailjvtfq5bv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

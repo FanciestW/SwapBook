@@ -1,40 +1,69 @@
 package me.williamlin.swapbook;
 
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
-//AWS imports:
-import com.amazonaws.mobile.auth.core.IdentityManager;
-import com.amazonaws.mobile.auth.ui.AuthUIConfiguration;
-import com.amazonaws.mobile.auth.ui.SignInActivity;
-import com.amazonaws.mobile.config.AWSConfiguration;
-import com.amazonaws.mobile.auth.userpools.CognitoUserPoolsSignInProvider;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class login extends AppCompatActivity {
+
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initializeApplication();
+        mAuth = FirebaseAuth.getInstance();
         setContentView(R.layout.activity_login);
     }
 
-    private void initializeApplication() {
+    @Override
+    public void onStart(){
+        super.onStart();
 
-        AWSConfiguration awsConfiguration = new AWSConfiguration(getApplicationContext());
+        FirebaseUser user = mAuth.getCurrentUser();
+        if(user != null) goToMain();
+    }
 
-        // If IdentityManager is not created, create it
-        if (IdentityManager.getDefaultIdentityManager() == null) {
-            IdentityManager identityManager =
-                    new IdentityManager(getApplicationContext(), awsConfiguration);
-            IdentityManager.setDefaultIdentityManager(identityManager);
+    public void loginUser(View view){
+        EditText emailTxt = (EditText)findViewById(R.id.input_email);
+        EditText pwTxt = (EditText)findViewById(R.id.input_password);
+        String email = emailTxt.getText().toString();
+        String password = pwTxt.getText().toString();
+
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d("LOGIN", "signInWithEmail:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            goToMain();
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w("LOGIN", "signInWithEmail:failure", task.getException());
+                            Toast.makeText(login.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                            //Login Failed
+                        }
+
+                        // ...
+                    }
+                });
+    }
+
+    private void goToMain(){
+        if(mAuth.getCurrentUser() != null){
+            //Intent to main
         }
-
-        // Add Amazon Cognito User Pools as Identity Provider.
-        IdentityManager.getDefaultIdentityManager().addSignInProvider(
-                CognitoUserPoolsSignInProvider.class);
-
-        // . . .
-
     }
 }
