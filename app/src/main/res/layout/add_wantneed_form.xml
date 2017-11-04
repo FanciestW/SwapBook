@@ -3,7 +3,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
     <EditText
-        android:id="@+id/add_want_isbn"
+        android:id="@+id/add_wantneed_isbn"
         android:inputType="number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -13,7 +13,7 @@
         android:layout_marginBottom="4dp"
         android:hint="ISBN-13" />
     <EditText
-        android:id="@+id/add_want_title"
+        android:id="@+id/add_wantneed_title"
         android:inputType="textMultiLine"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

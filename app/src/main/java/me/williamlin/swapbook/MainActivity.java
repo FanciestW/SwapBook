@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         builder.setTitle("Add a Wanted Book");
 
         LayoutInflater inflater = this.getLayoutInflater();
-        final View dialogView = inflater.inflate(R.layout.add_want_form, null);
+        final View dialogView = inflater.inflate(R.layout.add_wantneed_form, null);
 
         // Inflate and set the layout for the dialog
         // Pass null as the parent view because its going in the dialog layout
@@ -69,8 +69,8 @@ public class MainActivity extends AppCompatActivity {
         builder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                String isbn = ((EditText)dialogView.findViewById(R.id.add_want_isbn)).getText().toString();
-                String title = ((EditText)dialogView.findViewById(R.id.add_want_title)).getText().toString();
+                String isbn = ((EditText)dialogView.findViewById(R.id.add_wantneed_isbn)).getText().toString();
+                String title = ((EditText)dialogView.findViewById(R.id.add_wantneed_title)).getText().toString();
 
                 mAuth = FirebaseAuth.getInstance();
                 currentUser = mAuth.getCurrentUser();
@@ -81,6 +81,48 @@ public class MainActivity extends AppCompatActivity {
                 newWant.put("title", title);
 
                 db.collection("users").document(currentUser.getUid()).collection("wantedBooks").add(newWant);
+
+                Log.d("New Want Details", isbn + ", " + title);
+
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
+    }
+
+    public void addNeed(View view){
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Add a Needed Book");
+
+        LayoutInflater inflater = this.getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.add_wantneed_form, null);
+
+        // Inflate and set the layout for the dialog
+        // Pass null as the parent view because its going in the dialog layout
+        builder.setView(dialogView);
+
+        // Set up the buttons
+        builder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String isbn = ((EditText)dialogView.findViewById(R.id.add_wantneed_isbn)).getText().toString();
+                String title = ((EditText)dialogView.findViewById(R.id.add_wantneed_title)).getText().toString();
+
+                mAuth = FirebaseAuth.getInstance();
+                currentUser = mAuth.getCurrentUser();
+                db = FirebaseFirestore.getInstance();
+
+                Map<String, Object> newNeed = new HashMap<>();
+                newNeed.put("ISBN", isbn);
+                newNeed.put("title", title);
+
+                db.collection("users").document(currentUser.getUid()).collection("neededBooks").add(newNeed);
 
                 Log.d("New Want Details", isbn + ", " + title);
 

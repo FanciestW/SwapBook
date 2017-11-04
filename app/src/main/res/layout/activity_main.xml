@@ -58,7 +58,8 @@
                 android:layout_weight=".5"
                 android:background="@drawable/buttonicon"
                 android:layout_margin="10dp"
-                android:text="Add: Need"/>
+                android:text="Add: Need"
+                android:onClick="addNeed"/>
 
         </LinearLayout>
         <LinearLayout
