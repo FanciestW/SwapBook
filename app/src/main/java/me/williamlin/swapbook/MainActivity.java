@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void addWant(View view){
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Add New List");
+        builder.setTitle("Add a Wanted Book");
 
         LayoutInflater inflater = this.getLayoutInflater();
         final View dialogView = inflater.inflate(R.layout.add_want_form, null);
@@ -66,8 +66,8 @@ public class MainActivity extends AppCompatActivity {
         builder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                String title = ((EditText)dialogView.findViewById(R.id.add_list_title)).getText().toString();
-                String desc = ((EditText)dialogView.findViewById(R.id.add_list_desc)).getText().toString();
+                String title = ((EditText)dialogView.findViewById(R.id.add_want_isbn)).getText().toString();
+                String desc = ((EditText)dialogView.findViewById(R.id.add_want_title)).getText().toString();
 
                 Log.d("New List Details", title + ", " + desc);
 
