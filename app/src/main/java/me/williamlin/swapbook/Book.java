@@ -5,17 +5,18 @@ package me.williamlin.swapbook;
  */
 
 public class Book {
-    String isbn, title;
+    String isbn, title, publisher;
     int edition;
     String[] authors;
 
     public Book(){}
 
-    public Book(String isbn, String title, int edition, String[] authors){
+    public Book(String isbn, String title, int edition, String[] authors, String publisher){
         this.isbn = isbn;
         this.title = title;
         this.edition = edition;
         this.authors = authors;
+        this.publisher = publisher;
     }
 
     public String getIsbn(){ return isbn; }
