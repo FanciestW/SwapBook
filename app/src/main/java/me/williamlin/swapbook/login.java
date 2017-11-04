@@ -69,7 +69,8 @@ public class login extends AppCompatActivity {
 
     private void goToMain(){
         if(mAuth.getCurrentUser() != null){
-            //Intent to main
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
         }
     }
 }
