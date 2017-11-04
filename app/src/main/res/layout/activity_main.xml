@@ -33,7 +33,8 @@
                 android:layout_weight=".5"
                 android:background="@drawable/buttonicon"
                 android:layout_margin="10dp"
-                android:text="Exchange" />
+                android:text="Exchange"
+                android:onClick="goToExchange"/>
             
         </LinearLayout>
 
@@ -58,7 +59,7 @@
                 android:layout_weight=".5"
                 android:background="@drawable/buttonicon"
                 android:layout_margin="10dp"
-                android:text="Add: Need"
+                android:text="Add: Have"
                 android:onClick="addNeed"/>
 
         </LinearLayout>

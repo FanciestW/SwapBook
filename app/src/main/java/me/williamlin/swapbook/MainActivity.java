@@ -56,10 +56,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void addWant(View view){
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Add a Wanted Book");
+        builder.setTitle("Add a Book You Want");
 
         LayoutInflater inflater = this.getLayoutInflater();
-        final View dialogView = inflater.inflate(R.layout.add_wantneed_form, null);
+        final View dialogView = inflater.inflate(R.layout.add_wanthave_form, null);
 
         // Inflate and set the layout for the dialog
         // Pass null as the parent view because its going in the dialog layout
@@ -69,8 +69,8 @@ public class MainActivity extends AppCompatActivity {
         builder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                String isbn = ((EditText)dialogView.findViewById(R.id.add_wantneed_isbn)).getText().toString();
-                String title = ((EditText)dialogView.findViewById(R.id.add_wantneed_title)).getText().toString();
+                String isbn = ((EditText)dialogView.findViewById(R.id.add_wanthave_isbn)).getText().toString();
+                String title = ((EditText)dialogView.findViewById(R.id.add_wanthave_title)).getText().toString();
 
                 mAuth = FirebaseAuth.getInstance();
                 currentUser = mAuth.getCurrentUser();
@@ -98,10 +98,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void addNeed(View view){
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Add a Needed Book");
+        builder.setTitle("Add a Book You Have");
 
         LayoutInflater inflater = this.getLayoutInflater();
-        final View dialogView = inflater.inflate(R.layout.add_wantneed_form, null);
+        final View dialogView = inflater.inflate(R.layout.add_wanthave_form, null);
 
         // Inflate and set the layout for the dialog
         // Pass null as the parent view because its going in the dialog layout
@@ -111,8 +111,8 @@ public class MainActivity extends AppCompatActivity {
         builder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                String isbn = ((EditText)dialogView.findViewById(R.id.add_wantneed_isbn)).getText().toString();
-                String title = ((EditText)dialogView.findViewById(R.id.add_wantneed_title)).getText().toString();
+                String isbn = ((EditText)dialogView.findViewById(R.id.add_wanthave_isbn)).getText().toString();
+                String title = ((EditText)dialogView.findViewById(R.id.add_wanthave_title)).getText().toString();
 
                 mAuth = FirebaseAuth.getInstance();
                 currentUser = mAuth.getCurrentUser();

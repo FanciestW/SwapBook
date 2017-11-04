@@ -2,11 +2,15 @@ package me.williamlin.swapbook;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 
 public class findExchangeActivity extends AppCompatActivity {
 
@@ -28,6 +32,10 @@ public class findExchangeActivity extends AppCompatActivity {
     }
 
     public void findMatches(View view){
-        db.collection("users").document().collection("haveBooks").whereEqualTo("ISBN", )
+        CollectionReference haveBooksRef = db.collection("users").document().collection("haveBooks");
+        Query q = haveBooksRef.whereEqualTo("ISBN", "123456789");
+        q.add
+
+        Log.d("test", "test");
     }
 }
