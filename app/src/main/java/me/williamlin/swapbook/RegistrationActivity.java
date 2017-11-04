@@ -53,7 +53,8 @@ public class RegistrationActivity extends AppCompatActivity {
         final String email = ((EditText)findViewById(R.id.input_email)).getText().toString();
         final String password = ((EditText)findViewById(R.id.input_password)).getText().toString();
 
-        final String name = ((EditText)findViewById(R.id.input_name)).getText().toString();
+        final String fname = ((EditText)findViewById(R.id.input_fname)).getText().toString();
+        final String lname = ((EditText)findViewById(R.id.input_lname)).getText().toString();
         final String university = ((EditText)findViewById(R.id.input_university)).getText().toString();
 
         try {
@@ -66,11 +67,8 @@ public class RegistrationActivity extends AppCompatActivity {
                                 Log.d("REGISTRATION", "createUserWithEmail:success");
                                 FirebaseUser user = mAuth.getCurrentUser();
 
-                                Map<String, Object> newUser = new HashMap<>();
-                                newUser.put("name", name);
-                                newUser.put("email", email);
-                                newUser.put("university", university);
-                                db.collection("users").document(user.getUid().toString()).set(newUser);
+                                User newUser = new User(user.getUid(), fname, lname, university, email);
+                                db.collection("users").document(user.getUid()).set(newUser);
                                 goToMain();
                             } else {
                                 // If sign in fails, display a message to the user.
