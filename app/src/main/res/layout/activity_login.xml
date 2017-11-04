@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    android:background="#aee79e"
+    android:background="#dce1ea"
     tools:context="me.williamlin.swapbook.login"
     android:focusableInTouchMode="true">
 
@@ -19,6 +19,17 @@
         android:paddingLeft="24dp"
         android:paddingRight="24dp">
 
+        <!-- Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SwapBook"
+            android:textSize="30dp"
+            android:fontFamily="monospace"
+            android:textStyle="bold"
+            android:textColor="#006fff"
+            android:layout_marginTop="-75dp" />
+
         <!-- Email Label -->
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
@@ -29,7 +40,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
-                android:hint="Email" />
+                android:hint="Email"
+                android:textColorHint="#000000"/>
         </android.support.design.widget.TextInputLayout>
 
         <!-- Password Label -->
@@ -42,7 +54,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
-                android:hint="Password" />
+                android:hint="Password"
+                android:textColorHint="#000000"/>
         </android.support.design.widget.TextInputLayout>
 
         <!-- Button -->
@@ -53,7 +66,9 @@
             android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"
             android:padding="12dp"
-            android:text="Login"/>
+            android:text="Login"
+            android:textColor="#ffffff"
+            android:background="#a6a6a6" />
 
         <!-- Registration -->
         <TextView android:id="@+id/link_signup"
