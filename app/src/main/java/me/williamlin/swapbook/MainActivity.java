@@ -22,6 +22,7 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthStateListener;
     private FirebaseUser currentUser;
     private FirebaseFirestore db;
 
@@ -29,15 +30,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mAuth = FirebaseAuth.getInstance();
-        currentUser = mAuth.getCurrentUser();
-        db.getInstance();
-
-        mAuth.addAuthStateListener(new FirebaseAuth.AuthStateListener() {
+        mAuthStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if(user != null){
+                    Log.d("User Activity", "User Signed In");
+                } else {
+                    Log.d("User Activity", "User Sign Out");
+                    goToLogin();
+                }
             }
-        });
+        };
+        currentUser = mAuth.getCurrentUser();
+        db.getInstance();
 
         if(currentUser != null){
             Toast.makeText(MainActivity.this, ("Logged in as " + currentUser.getEmail().toString()), Toast.LENGTH_LONG).show();
@@ -45,8 +51,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+    @Override
+    protected void onStop(){
+        super.onStop();
+        if(mAuthStateListener != null) mAuth.removeAuthStateListener(mAuthStateListener);
+    }
+
     public void logout(View view){
-        FirebaseAuth.getInstance().signOut();
+        try {
+            FirebaseAuth.getInstance().signOut();
+            goToLogin();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void goToLogin(){
