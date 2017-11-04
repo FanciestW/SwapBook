@@ -55,7 +55,8 @@
                 android:layout_weight=".5"
                 android:background="@drawable/buttonicon"
                 android:layout_margin="10dp"
-                android:text="Add"/>
+                android:text="Add Want"
+                android:onClick="addWant"/>
 
             <Button
                 android:layout_width="0dp"
@@ -63,7 +64,7 @@
                 android:layout_weight=".5"
                 android:background="@drawable/buttonicon"
                 android:layout_margin="10dp"
-                android:text="Add"/>
+                android:text="Add Need"/>
 
         </LinearLayout>
         <LinearLayout
@@ -86,7 +87,8 @@
                 android:layout_weight=".5"
                 android:background="@drawable/buttonicon"
                 android:layout_margin="10dp"
-                android:text="Add"/>
+                android:text="Logout"
+                android:onClick="logout"/>
 
         </LinearLayout>
         
