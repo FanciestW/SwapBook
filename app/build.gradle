@@ -45,14 +45,10 @@ dependencies {
 
     // Dependencies for the SDK Sign-in prompt UI library
     compile 'com.android.support:appcompat-v7:26.+'
-<<<<<<< HEAD
     compile('com.amazonaws:aws-android-sdk-auth-ui:2.6.+@aar') { transitive = true; }
-=======
-    compile ('com.amazonaws:aws-android-sdk-auth-ui:2.6.+@aar') { transitive = true; }
 
     //Firebase Dependencies:
     apply plugin: 'com.google.gms.google-services'
 
     compile 'com.google.firebase:firebase-auth:11.4.2'
->>>>>>> cf303d14fcf743180b825916efdcf4e661c9e2e5
 }
