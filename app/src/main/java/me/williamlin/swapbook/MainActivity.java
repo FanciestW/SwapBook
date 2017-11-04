@@ -137,4 +137,9 @@ public class MainActivity extends AppCompatActivity {
 
         builder.show();
     }
+
+    public void goToExchange(View view){
+        Intent intent = new Intent(this, findExchangeActivity.class);
+        startActivity(intent);
+    }
 }
