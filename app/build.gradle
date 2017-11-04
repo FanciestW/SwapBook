@@ -29,6 +29,10 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
+    //Support design
+    compile 'com.android.support:design:26.+'
+    compile 'com.android.support:appcompat-v7:26.+'
+
     //aws dependencies
     compile 'com.android.support:multidex:1.0.1'
     compile 'com.amazonaws:aws-android-sdk-core:2.6.0'
