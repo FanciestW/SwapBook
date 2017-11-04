@@ -16,6 +16,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
@@ -53,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void addWant(View view){
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Add New List");
+        builder.setTitle("Add a Wanted Book");
 
         LayoutInflater inflater = this.getLayoutInflater();
         final View dialogView = inflater.inflate(R.layout.add_want_form, null);
@@ -66,10 +69,20 @@ public class MainActivity extends AppCompatActivity {
         builder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                String title = ((EditText)dialogView.findViewById(R.id.add_list_title)).getText().toString();
-                String desc = ((EditText)dialogView.findViewById(R.id.add_list_desc)).getText().toString();
+                String isbn = ((EditText)dialogView.findViewById(R.id.add_want_isbn)).getText().toString();
+                String title = ((EditText)dialogView.findViewById(R.id.add_want_title)).getText().toString();
 
-                Log.d("New List Details", title + ", " + desc);
+                mAuth = FirebaseAuth.getInstance();
+                currentUser = mAuth.getCurrentUser();
+                db = FirebaseFirestore.getInstance();
+
+                Map<String, Object> newWant = new HashMap<>();
+                newWant.put("ISBN", isbn);
+                newWant.put("title", title);
+
+                db.collection("users").document(currentUser.getUid()).collection("wantedBooks").add(newWant);
+
+                Log.d("New Want Details", isbn + ", " + title);
 
             }
         });
