@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
                 db.collection("users").document(currentUser.getUid()).collection("wantedBooks").add(newWant);
 
-                Log.d("New Want Details", isbn + ", " + title);
+                Log.d("New Want Book Details", isbn + ", " + title);
 
             }
         });
@@ -122,9 +122,9 @@ public class MainActivity extends AppCompatActivity {
                 newNeed.put("ISBN", isbn);
                 newNeed.put("title", title);
 
-                db.collection("users").document(currentUser.getUid()).collection("neededBooks").add(newNeed);
+                db.collection("users").document(currentUser.getUid()).collection("haveBooks").add(newNeed);
 
-                Log.d("New Want Details", isbn + ", " + title);
+                Log.d("New Have Book Details", isbn + ", " + title);
 
             }
         });
