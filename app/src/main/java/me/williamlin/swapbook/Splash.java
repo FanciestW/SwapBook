@@ -24,15 +24,22 @@ public class Splash extends AppCompatActivity {
         identityManager.doStartupAuth(this, new StartupAuthResultHandler() {
             @Override
             public void onComplete(StartupAuthResult startupAuthResult) {
-                // User identity is ready as unauthenticated user or previously signed-in user.
+                if(startupAuthResult.isUserSignedIn()){
+                    //User is signed in
+                }
+                if(!startupAuthResult.isUserSignedIn()) goToLogin();
             }
         });
 
-        // Go to the main activity
+        goToLogin();
+
+    }
+
+    private void goToLogin(){
+        // Go to the login Activity
         final Intent intent = new Intent(this, login.class)
                 .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         this.startActivity(intent);
         this.finish();
-
     }
 }
