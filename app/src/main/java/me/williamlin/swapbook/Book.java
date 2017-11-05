@@ -1,26 +1,30 @@
 package me.williamlin.swapbook;
 
+import java.util.List;
+
 /**
  * Created by william on 11/4/17.
  */
 
 public class Book {
-    String isbn, title, publisher;
+    String isbn, title, publisher, description;
     int edition;
-    String[] authors;
+    List<String> authors;
 
     public Book(){}
 
-    public Book(String isbn, String title, int edition, String[] authors, String publisher){
+    public Book(String isbn, String title, int edition, List<String> authors, String publisher, String description){
         this.isbn = isbn;
         this.title = title;
         this.edition = edition;
         this.authors = authors;
         this.publisher = publisher;
+        this.description = description;
     }
 
     public String getIsbn(){ return isbn; }
     public String gettitle(){ return title; }
     public int getEdition(){ return edition; }
-    public String[] getAuthors(){ return authors; }
+    public List<String> getAuthors(){ return authors; }
+    public String getDescription(){ return description; }
 }
