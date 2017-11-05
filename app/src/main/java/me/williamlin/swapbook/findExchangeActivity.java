@@ -21,6 +21,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class findExchangeActivity extends AppCompatActivity {
@@ -43,8 +44,6 @@ public class findExchangeActivity extends AppCompatActivity {
     }
 
     public void findMatches(View view){
-        CollectionReference userRef = db.collection("users");
-        String id = userRef.getId();
 
         Query match = db.collection("users").document("wtz5jtb3hcT9R8U9TmxBz5UrnHy1").collection("haveBooks").whereEqualTo("ISBN", "12345678");
         Task<QuerySnapshot> snap = match.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -56,5 +55,9 @@ public class findExchangeActivity extends AppCompatActivity {
         });
 
         Log.d("Test", "test");
+    }
+
+    public String[] getUsers(String university){
+        return null;
     }
 }

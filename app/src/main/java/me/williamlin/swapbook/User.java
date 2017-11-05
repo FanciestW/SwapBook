@@ -17,6 +17,7 @@ public class User {
         this.email = email;
     }
 
+    public String getUID(){ return uid; }
     public String getFirstName(){ return firstName; }
     public String getLastName(){ return lastName; }
     public String getUniversity(){ return university; }
