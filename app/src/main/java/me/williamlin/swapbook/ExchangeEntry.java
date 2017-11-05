@@ -20,6 +20,13 @@ public class ExchangeEntry {
     User tempUser;
     Book tempBook;
 
+    public ExchangeEntry(Book book){
+        this.bookTitle = book.title;
+        this.isbn = book.isbn;
+        this.authors = book.authors;
+        this.description = book.description;
+    }
+
     public ExchangeEntry(User user, Book book){
         this.bookTitle = book.title;
         this.isbn = book.isbn;

@@ -26,6 +26,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class findExchangeActivity extends AppCompatActivity {
 
@@ -135,6 +137,7 @@ public class findExchangeActivity extends AppCompatActivity {
                             matches.put(uid, ds.get("ISBN").toString());
                             //addMatchEntry(uid, ds.get("ISBN").toString());
                             getUserAndBook(uid, ds.get("ISBN").toString());
+                            //listBook(ds.get("ISBN").toString());
                         }
                     }
                     Log.d("MAMAMAMAMAM", "Size of Match: " + matches.size());
@@ -168,30 +171,32 @@ public class findExchangeActivity extends AppCompatActivity {
 
     public void addMatchEntry(){
         ExchangeEntry entry = new ExchangeEntry(tempUser, tempBook);
+        Log.d("Added entry", entry.bookTitle);
         arrayAdapter.add(entry);
     }
 
-//    public void addMatchEntry(final String uid, final String isbn){
-//
-//        final ExchangeEntry newEntry = new ExchangeEntry(uid, isbn);
-//
-//        Thread thread = new Thread(new Runnable() {
-//            public void run() {
-//                arrayAdapter.add(newEntry);
-//            }
-//        });
-//        try{
-//            thread.wait(1000);
-//        } catch (Exception ex){
-//
-//        }
-//        thread.start();
-//
-//
-//
-//
-//        Log.d("Done", "Added Match Entry");
-//    }
+    public void addMatchEntry(final String uid, final String isbn){
+
+        final ExchangeEntry newEntry = new ExchangeEntry(uid, isbn);
+        if(newEntry.userReady) arrayAdapter.add(newEntry);
+
+
+        Log.d("Done", "Added Match Entry");
+    }
+
+    public void listBook(String isbn){
+        bookRef.document(isbn).get().addOnSuccessListener(this, new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if(documentSnapshot.exists()){
+                    Book book = documentSnapshot.toObject(Book.class);
+                    ExchangeEntry entry = new ExchangeEntry(book);
+                    arrayAdapter.add(entry);
+                }
+
+            }
+        });
+    }
 
     public void everyUIDAdd(String uid){ everyUID.add(uid); }
     public void allYourNeedsAdd(String need){ allYourNeeds.add(need); }
