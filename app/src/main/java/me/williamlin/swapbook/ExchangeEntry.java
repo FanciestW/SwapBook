@@ -27,45 +27,21 @@ public class ExchangeEntry {
         this.description = book.description;
     }
 
+    public ExchangeEntry(String uid, String isbn){
+        this.bookTitle = "Title";
+        this.isbn = isbn;
+        this.seller = uid;
+        this.description = "Some thing";
+        this.contact = uid;
+
+    }
+
     public ExchangeEntry(User user, Book book){
         this.bookTitle = book.title;
         this.isbn = book.isbn;
         this.seller = user.getFirstName() + " " + user.getLastName();
         this.description = book.description;
         this.contact = user.getEmail();
-    }
-
-    public ExchangeEntry(String uid, String isbn){
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-        db.collection("books").document("isbn").get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                try {
-                    if(documentSnapshot.exists()){
-                        tempBook = documentSnapshot.toObject(Book.class);
-                        fillFromTempBook();
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
-        db.collection("users").document("uid").get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                try {
-                    if(documentSnapshot.exists()){
-                        tempUser = documentSnapshot.toObject(User.class);
-                        fillFromTempUser();
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
 
     }
 

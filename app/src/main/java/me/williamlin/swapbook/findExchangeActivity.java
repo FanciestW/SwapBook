@@ -135,8 +135,9 @@ public class findExchangeActivity extends AppCompatActivity {
                         Log.d("HAHAHAHAHAHAHAH", ds.get("ISBN").toString());
                         if (allYourNeeds.contains(ds.get("ISBN"))) {
                             matches.put(uid, ds.get("ISBN").toString());
+                            arrayAdapter.add(new ExchangeEntry(uid, ds.get("ISBN").toString()));
                             //addMatchEntry(uid, ds.get("ISBN").toString());
-                            getUserAndBook(uid, ds.get("ISBN").toString());
+                            //getUserAndBook(uid, ds.get("ISBN").toString());
                             //listBook(ds.get("ISBN").toString());
                         }
                     }
@@ -152,7 +153,7 @@ public class findExchangeActivity extends AppCompatActivity {
         userRef.document(uid).get().addOnSuccessListener(this, new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                if(documentSnapshot.exists()) tempUser = documentSnapshot.toObject(User.class);
+                tempUser = documentSnapshot.toObject(User.class);
             }
         });
 
@@ -161,7 +162,7 @@ public class findExchangeActivity extends AppCompatActivity {
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 if(documentSnapshot.exists()){
                     tempBook = documentSnapshot.toObject(Book.class);
-                    addMatchEntry();
+                    if(tempUser != null && tempBook != null) addMatchEntry();
                 }
 
             }
