@@ -26,7 +26,7 @@
             android:textSize="30dp"
             android:fontFamily="monospace"
             android:textStyle="bold"
-            android:textColor="#006fff" />
+            android:textColor="#35a5e1" />
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
@@ -105,7 +105,7 @@
             android:padding="12dp"
             android:gravity="center"
             android:text="Register"
-            android:textColor="#000000"
+            android:textColor="#00689f"
             android:background="#a6a6a6"
             android:onClick="registerUser"/>
 
