@@ -8,24 +8,34 @@
     android:background="#dce1ea"
     android:text="Items You Need">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Items You Need"
-        android:textColor="#35a5e1"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        />
+        android:orientation="vertical">
 
-    <ListView
-        android:id="@+id/ISBNListView"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="5dp"
-        android:background="@android:color/transparent"
-        android:cacheColorHint="@android:color/transparent"
-        android:divider="#CCCCCC"
-        android:dividerHeight="1dp"
-        android:paddingLeft="2dp">
-    </ListView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Items You Need"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:textColor="#35a5e1"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            />
+
+        <ListView
+            android:id="@+id/ISBNListView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@android:color/transparent"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="#CCCCCC"
+            android:dividerHeight="1dp"
+            android:paddingLeft="2dp">
+        </ListView>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
